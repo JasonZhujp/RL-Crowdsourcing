@@ -1,0 +1,70 @@
+{   # BC REQUESTER #
+
+    # [common]
+    'model_name': 'BC',
+    'for': 'r',
+    'seed': 1111,
+    'data_dir': "../exp_data/",
+    'save_model': True,
+    'save_dir': "models/",
+    'device': 'cuda',
+    'epoch': 4, 
+    'train_batch_size': 512,
+    'eval_batch_size': 512,
+    'eval_frequency': 5,    # 每隔n个batch评估一次
+    'save_frequency': 10,   # 每隔n个batch保存一次模型
+    'print_frequency': 50,  # 每隔n个batch输出一次中间结果
+    'best_info_idx': {
+        'category':      0,
+        'industry':      1,
+        'award':         2,
+        'start_gap':     3,
+        'end_gap':       4,
+        'best_reward_w': 5,
+        'best_reward_r': 6
+    },
+    'info_idx': {
+        'legal_max_action':0,
+        'category':        1,
+        'industry':        2,
+        'award':           3,
+        'start_gap':       4,
+        'end_gap':         5,
+        'worker_quality':  6,
+        'project_quality': 7
+    },
+    'sample_num': 2608543,
+    'reward_reshape_factor': 0,          # BC占位
+    'reward_w_factor': 1.0,
+    'reward_r_factor_start': 1.0 * 1,    # BC占位
+    'reward_r_factor_end': 1.0 * 1,      # BC占位
+    'eval_award_tolerance': 0.3,         # 评估时award允许的误差范围
+
+    # [wandb]
+    'use_wandb': True,
+    'wandb_project_name': 'RL_Crowdsourcing',
+    'wandb_group_name': 'BC',
+    'wandb_tags_name': 'r',
+
+    # [network]
+    'BCAgent_param': {
+        'max_action_num': 83,
+        'category_num': 7,
+        'category_emb_dim': 4,
+        'industry_num': 37,
+        'industry_emb_dim': 6,
+        'inner_output_dim': 64,
+        'nhead_1': 4,
+        'nhead_2': 1,
+        'encoder_layer_num': 1,
+        'feature_dict': {'category_sec': [0, 6],
+                         'industry_sec': [6, 12],
+                         'award_sec':    [12, 18],
+                         'others_sec':   [18, 24]},
+        'lr': 5e-4,
+        'factor': 0.95,   # 学习率下降的比例
+        'patience': 300, # 能接受多少轮batch没有指标提升
+        'improve':0.05,  # 与最优指标的相对提升阈值
+        'device': 'cuda'
+    },
+}

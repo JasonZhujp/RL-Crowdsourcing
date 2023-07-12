@@ -1,0 +1,19 @@
+{
+    # [common]
+    'seed': 1111,
+    'data_dir': "../exp_data/",
+    'eval_batch_size': 512,
+    'info_idx': {
+        'legal_max_action':0,
+        'category':        1,
+        'industry':        2,
+        'award':           3,
+        'start_gap':       4,
+        'end_gap':         5,
+        'worker_quality':  6,
+        'project_quality': 7
+    },
+    'sample_num': 2608543,
+    'award_tolerance': 0.3,
+
+}
